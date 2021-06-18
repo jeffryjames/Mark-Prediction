@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark Prediction</title>
+
+  <style>
+    body {
+      background: linear-gradient(to top left, #6699ff 0%, #ff99cc 100%);
+      background-repeat: no-repeat;
+      text-align: center;
+      padding-bottom: 300px;
+    }
+
+    button {
+
+      background-color: linear-gradient(to top left, #6699ff 0%, #ff99cc 100%);
+      padding: 5px;
+    }
+
+    input {
+      padding: 5px;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+
+    div.form{
+      padding: 5px;
+      margin-left: 500px;
+      margin-right: 500px;
+      
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="login">
+
+    <h1><u>MARKS PREDICTION</u></h1>
+    <div  class = "form">
+      <h3>ENTER DETAILS </h3>
+
+
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <p><b>School Location </b> <br> (Urban : 1 / Suburban : 2 / Rural : 3) </p>
+        <input type="text" name="School Location" placeholder="" required="required" />
+        <br>
+        <p><b>Teaching method </b> <br> (Standard : 1 / Experimental : 2)</p>
+
+        <input type="text" name="Teaching method" placeholder="" required="required" />
+        <br>
+        <p><b>Gender </b><br> (Female : 1 / Male : 2) </p>
+
+        <input type="text" name="Gender" placeholder="" required="required" />
+        <br>
+        <p><b> Model Test Score </b><br>( 0 - 100 )</p>
+
+        <input type="text" name="Model Test Score" placeholder="" required="required" />
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">PREDICT</button>
+      </form>
+      <br>
+      <br>
+    </div>
+    <h2>
+      {{ prediction_text }}
+    </h2>
+
+  </div>
+
+
+</body>
+
+</html>
