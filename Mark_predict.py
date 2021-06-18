@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+import pickle
 
 data = pd.read_csv("D:/Python/test_scores.csv")
 print(data.head())
@@ -43,7 +44,10 @@ model.fit(X_train,y_train)
 y_pred = model.predict(X_test)
 print(y_pred)
 
-print(model.predict([[1, 2, 1,50]]))
+pickle.dump(model, open('model.pkl','wb'))
+model = pickle.load(open('model.pkl','rb'))
+
+print(model.predict([[1, 2, 1,100]]))
 
 
 

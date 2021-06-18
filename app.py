@@ -16,10 +16,11 @@ def predict():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
-    output = round(prediction[0], 2)
-
+    output = int(prediction[0])
+    if output>100:
+        output = 100
     return render_template('index.html', prediction_text='Predicted Student Mark :  {}'.format(output))
 
 
 if __name__ == "__main__":
-    app.run(debug=True)# -*- coding: utf-8 -*-
+    app.run(debug=False)# -*- coding: utf-8 -*-
